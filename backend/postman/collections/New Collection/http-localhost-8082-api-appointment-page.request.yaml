@@ -1,0 +1,10 @@
+$kind: http-request
+name: http://localhost:8082/api/appointment/page
+description: ""
+url: http://localhost:8082/api/appointment/page?page=0&size=5&sort=appointmentDate,asc
+method: GET
+queryParams:
+  page: "0"
+  size: "5"
+  sort: appointmentDate,asc
+order: 4380698671922359

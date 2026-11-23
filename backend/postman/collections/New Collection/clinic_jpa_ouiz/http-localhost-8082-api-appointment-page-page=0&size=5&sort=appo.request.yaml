@@ -1,0 +1,16 @@
+$kind: http-request
+name: http://localhost:8082/api/appointment/page?page=0&size=5&sort=appointmentDate,asc
+description: ""
+url: http://localhost:8082/api/appointment/page?page=0&size=5&sort=appointmentDate,asc
+method: GET
+queryParams:
+  page: "0"
+  size: "5"
+  sort: appointmentDate,asc
+settings:
+  protocolVersion: auto
+  strictSSL: false
+  followRedirects: true
+  disableCookies: false
+  maxResponseSize: 52428800
+order: 4404741680396451

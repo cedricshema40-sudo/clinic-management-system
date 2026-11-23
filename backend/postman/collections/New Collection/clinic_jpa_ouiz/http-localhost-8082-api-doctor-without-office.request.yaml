@@ -1,0 +1,6 @@
+$kind: http-request
+name: http://localhost:8082/api/doctor/without-office
+description: ""
+url: http://localhost:8082/api/specialization/unused
+method: GET
+order: 4500404559287239

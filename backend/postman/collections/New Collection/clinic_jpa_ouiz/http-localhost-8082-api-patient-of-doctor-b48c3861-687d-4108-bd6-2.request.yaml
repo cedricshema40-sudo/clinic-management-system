@@ -1,0 +1,6 @@
+$kind: http-request
+name: http://localhost:8082/api/patient/of-doctor/b48c3861-687d-4108-bd6b-762545af7d6f
+description: ""
+url: http://localhost:8082/api/appointment/stats/by-status
+method: GET
+order: 4502040339943861

@@ -1,0 +1,9 @@
+$kind: http-request
+name: http://localhost:8082/api/appointment/doctor/b48c3861-687d-4108-bd6b-762545af7d6f/page
+description: "to check page "
+url: http://localhost:8082/api/appointment/doctor/b48c3861-687d-4108-bd6b-762545af7d6f/page?page=0&size=10
+method: GET
+queryParams:
+  page: "0"
+  size: "10"
+order: 3696577746213944

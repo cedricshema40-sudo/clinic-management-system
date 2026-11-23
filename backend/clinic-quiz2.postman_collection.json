@@ -1,0 +1,282 @@
+{
+    "variable":  [
+                     {
+                         "key":  "baseUrl",
+                         "type":  "default",
+                         "value":  "http://localhost:8082"
+                     },
+                     {
+                         "key":  "doctorId",
+                         "type":  "default",
+                         "value":  "b48c3861-687d-4108-bd6b-762545af7d6f"
+                     },
+                     {
+                         "key":  "patientId",
+                         "type":  "default",
+                         "value":  "49699fae-90b7-4e0b-85b4-aec45006b791"
+                     },
+                     {
+                         "key":  "specializationId",
+                         "type":  "default",
+                         "value":  "REPLACE_WITH_REAL_SPECIALIZATION_UUID"
+                     },
+                     {
+                         "key":  "officeNumber",
+                         "type":  "default",
+                         "value":  "104"
+                     },
+                     {
+                         "key":  "appointmentId",
+                         "type":  "default",
+                         "value":  "REPLACE_WITH_REAL_APPOINTMENT_UUID"
+                     },
+                     {
+                         "key":  "completedAppointmentId",
+                         "type":  "default",
+                         "value":  "REPLACE_WITH_COMPLETED_APPOINTMENT_UUID"
+                     },
+                     {
+                         "key":  "prescriptionId",
+                         "type":  "default",
+                         "value":  "REPLACE_WITH_REAL_PRESCRIPTION_UUID"
+                     },
+                     {
+                         "key":  "ssNumber",
+                         "type":  "default",
+                         "value":  "SS-2026-001"
+                     }
+                 ],
+    "info":  {
+                 "description":  "Quiz 2 requirements A1-D4 and bonus. Replace placeholder UUIDs with real records before testing.",
+                 "name":  "Clinic Quiz 2 - Complete Backend",
+                 "schema":  "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+             },
+    "item":  [
+                 {
+                     "name":  "A1 - Add specialization to doctor",
+                     "request":  {
+                                     "method":  "PUT",
+                                     "url":  "{{baseUrl}}/api/doctors/{{doctorId}}/specializations/{{specializationId}}",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "A2 - Remove specialization from doctor",
+                     "request":  {
+                                     "method":  "DELETE",
+                                     "url":  "{{baseUrl}}/api/doctors/{{doctorId}}/specializations/{{specializationId}}",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "A3 - Find free offices",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/offices/free",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "A4 - Change doctor\u0027s office",
+                     "request":  {
+                                     "method":  "PATCH",
+                                     "url":  "{{baseUrl}}/api/doctors/{{doctorId}}/office?officeNumber={{officeNumber}}",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "B1 - Save appointment",
+                     "request":  {
+                                     "body":  {
+                                                  "raw":  "{\n  \"appointmentDate\": \"2026-10-30T10:00:00\",\n  \"reason\": \"Quiz 2 B1 test\",\n  \"status\": \"CANCELLED\",\n  \"doctor\": {\n    \"id\": \"{{doctorId}}\"\n  },\n  \"patient\": {\n    \"id\": \"{{patientId}}\"\n  }\n}",
+                                                  "options":  {
+                                                                  "raw":  {
+                                                                              "language":  "json"
+                                                                          }
+                                                              },
+                                                  "mode":  "raw"
+                                              },
+                                     "method":  "POST",
+                                     "url":  "{{baseUrl}}/api/appointments/save",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Content-Type",
+                                                        "value":  "application/json"
+                                                    }
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "B2 - Change appointment status",
+                     "request":  {
+                                     "method":  "PATCH",
+                                     "url":  "{{baseUrl}}/api/appointments/{{appointmentId}}/status?status=CONFIRMED",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "B3 - Reschedule appointment",
+                     "request":  {
+                                     "method":  "PATCH",
+                                     "url":  "{{baseUrl}}/api/appointments/{{appointmentId}}/reschedule?newDate=2026-10-31",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "C1 - Create prescription for completed appointment",
+                     "request":  {
+                                     "body":  {
+                                                  "raw":  "{\n  \"medicineName\": \"Amoxicillin\",\n  \"dosage\": \"1 tablet, 3 times a day\",\n  \"durationDays\": 7\n}",
+                                                  "options":  {
+                                                                  "raw":  {
+                                                                              "language":  "json"
+                                                                          }
+                                                              },
+                                                  "mode":  "raw"
+                                              },
+                                     "method":  "POST",
+                                     "url":  "{{baseUrl}}/api/prescriptions/save?appointmentId={{completedAppointmentId}}",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Content-Type",
+                                                        "value":  "application/json"
+                                                    }
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "C2 - Get prescriptions by appointment",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/prescriptions/appointment/{{appointmentId}}",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "C3 - Get prescriptions by patient",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/prescriptions/patient/{{ssNumber}}",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "C4 - Update prescription",
+                     "request":  {
+                                     "body":  {
+                                                  "raw":  "{\n  \"medicineName\": \"Amoxicillin\",\n  \"dosage\": \"1 tablet, twice a day\",\n  \"durationDays\": 5\n}",
+                                                  "options":  {
+                                                                  "raw":  {
+                                                                              "language":  "json"
+                                                                          }
+                                                              },
+                                                  "mode":  "raw"
+                                              },
+                                     "method":  "PUT",
+                                     "url":  "{{baseUrl}}/api/prescriptions/update/{{prescriptionId}}",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Content-Type",
+                                                        "value":  "application/json"
+                                                    }
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "C4 - Delete prescription",
+                     "request":  {
+                                     "method":  "DELETE",
+                                     "url":  "{{baseUrl}}/api/prescriptions/delete/{{prescriptionId}}",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "C4 - Test appointment deletion protection",
+                     "request":  {
+                                     "method":  "DELETE",
+                                     "url":  "{{baseUrl}}/api/appointments/delete/{{appointmentId}}",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "D1 - Doctor agenda for a date",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/doctors/{{doctorId}}/agenda?date=2026-10-20",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "D2 - Patient upcoming appointments",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/patients/{{ssNumber}}/upcoming",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "D3 - Search doctors by name",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/doctors/search?name=gis",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "D4 - Dashboard summary",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/dashboard/summary",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "Bonus 1 - Top medicines",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/prescriptions/stats/top-medicines",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 },
+                 {
+                     "name":  "Bonus 2 - Doctor workload",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/doctors/workload?start=2026-10-01\u0026end=2026-10-31",
+                                     "header":  [
+
+                                                ]
+                                 }
+                 }
+             ]
+}

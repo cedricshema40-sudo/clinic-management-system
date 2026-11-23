@@ -1,0 +1,12 @@
+$kind: http-request
+name: http://localhost:8082/api/appointment/stats/by-status
+description: ""
+url: http://localhost:8082/api/appointment/stats/by-status
+method: GET
+settings:
+  protocolVersion: auto
+  strictSSL: false
+  followRedirects: true
+  disableCookies: false
+  maxResponseSize: 52428800
+order: 2901076249975510

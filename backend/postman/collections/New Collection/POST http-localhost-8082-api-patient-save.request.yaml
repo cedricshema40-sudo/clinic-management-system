@@ -1,0 +1,17 @@
+$kind: http-request
+name: POST http://localhost:8082/api/patient/save
+description: ""
+url: POST http://localhost:8082/api/patient/save
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"firstName\": \"Diane\",\r
+
+    \    \"lastName\": \"Mukamana\",\r
+
+    \    \"dateOfBirth\": \"1998-12-05\"\r
+
+    }"
+order: 4241281446858758

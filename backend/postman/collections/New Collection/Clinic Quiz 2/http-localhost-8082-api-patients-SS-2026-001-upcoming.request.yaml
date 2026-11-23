@@ -1,0 +1,6 @@
+$kind: http-request
+name: http://localhost:8082/api/patients/SS-2026-001/upcoming
+description: ""
+url: http://localhost:8082/api/patients/SS-2026-001/upcoming
+method: GET
+order: 2000

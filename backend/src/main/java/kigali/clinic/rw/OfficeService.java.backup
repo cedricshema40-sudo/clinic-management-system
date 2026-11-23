@@ -1,0 +1,125 @@
+package kigali.clinic.rw.service;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import kigali.clinic.rw.domain.Office;
+import kigali.clinic.rw.repository.OfficeRepository;
+
+@Service
+public class OfficeService {
+
+    private final OfficeRepository officeRepository;
+
+    public OfficeService(
+            OfficeRepository officeRepository) {
+
+        this.officeRepository = officeRepository;
+    }
+
+
+    // =========================================================
+    // Save Office
+    // =========================================================
+    public Office saveOffice(Office office) {
+
+        return officeRepository.save(office);
+    }
+
+
+    // =========================================================
+    // Get All Offices
+    // =========================================================
+    public List<Office> getAllOffices() {
+
+        return officeRepository.findAll();
+    }
+
+
+    // =========================================================
+    // Get Office By ID
+    // =========================================================
+    public Office getOfficeById(UUID id) {
+
+        return officeRepository
+                .findById(id)
+                .orElse(null);
+    }
+
+
+    // =========================================================
+    // Update Office
+    // =========================================================
+    public Office updateOffice(
+            UUID id,
+            Office officeDetails) {
+
+        Office office = officeRepository
+                .findById(id)
+                .orElse(null);
+
+        if (office == null) {
+            return null;
+        }
+
+        office.setName(
+                officeDetails.getName()
+        );
+
+        office.setOfficeNumber(
+                officeDetails.getOfficeNumber()
+        );
+
+        return officeRepository.save(office);
+    }
+
+
+    // =========================================================
+    // Delete Office
+    // =========================================================
+    public void deleteOffice(UUID id) {
+
+        officeRepository.deleteById(id);
+    }
+
+
+    // =========================================================
+    // C3 - Find Busiest Office
+    // =========================================================
+    public String getBusiestOffice() {
+
+        List<Object[]> results =
+                officeRepository.findBusiestOffice();
+
+        // No appointments
+        if (results.isEmpty()) {
+
+            return "No appointments yet";
+        }
+
+        // The first row is the busiest office
+        Object[] row = results.get(0);
+
+        String officeName =
+                String.valueOf(row[0]);
+
+        int officeNumber =
+                ((Number) row[1]).intValue();
+
+        long appointmentCount =
+                ((Number) row[2]).longValue();
+
+        return officeName
+                + " (Office "
+                + officeNumber
+                + ") - "
+                + appointmentCount
+                + " appointments";
+    }
+   // AA3 TO FIND OFFICES WITHOUT DOCTOR
+    public List<Office> getFreeOffices() {
+        return officeRepository.findFreeOffice();
+    }
+}

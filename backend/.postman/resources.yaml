@@ -1,0 +1,13 @@
+# Use this workspace to collaborate
+workspace:
+  id: 0f708797-5024-4d65-8e7b-9819d636254a
+
+cloudResources:
+  collections:
+    ../postman/collections/Clinic Quiz 2: 572184a3-7438-4fc4-adc9-53ce2567b3f7
+
+# All resources in the `postman/` folder are automatically registered in Local View.
+# Point to additional files outside the `postman/` folder to register them individually. Example:
+#localResources:
+#  collections:
+#    - ../tests/E2E Test Collection/

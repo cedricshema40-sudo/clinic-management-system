@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/api/doctors/search?name=gis"
+method: GET
+queryParams:
+  name: gis
+order: 3000

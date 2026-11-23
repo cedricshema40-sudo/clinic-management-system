@@ -1,0 +1,55 @@
+
+.office-list-container {
+    width: 90%;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+}
+
+.office-list-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.office-list-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.office-list-container th,
+.office-list-container td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.office-list-container th {
+    background-color: #f2f2f2;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-right: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.update-button {
+    background-color: #777;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: not-allowed;
+}

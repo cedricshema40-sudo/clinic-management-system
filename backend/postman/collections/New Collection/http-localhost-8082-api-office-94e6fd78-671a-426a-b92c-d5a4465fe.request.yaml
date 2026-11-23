@@ -1,0 +1,15 @@
+$kind: http-request
+name: http://localhost:8082/api/office/94e6fd78-671a-426a-b92c-d5a4465fe943
+description: ""
+url: http://localhost:8082/api/office/94e6fd78-671a-426a-b92c-d5a4465fe943
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\": \"Updated Main Office\",\r
+
+    \    \"officeNumber\": 102\r
+
+    }"
+order: 819197608446247

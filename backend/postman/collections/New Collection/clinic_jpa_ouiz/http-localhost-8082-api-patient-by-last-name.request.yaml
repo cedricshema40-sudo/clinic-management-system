@@ -1,0 +1,8 @@
+$kind: http-request
+name: http://localhost:8082/api/patient/by-last-name
+description: ""
+url: http://localhost:8082/api/patient/by-last-name?lastName=uwase
+method: GET
+queryParams:
+  lastName: uwase
+order: 4448967712023497
